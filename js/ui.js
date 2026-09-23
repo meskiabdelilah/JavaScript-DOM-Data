@@ -33,35 +33,23 @@ function renderProductsTable(products)
     table.appendChild(thead);
     
         
+// Generation dynamique du <tbody> via Object.entries
     const tbody = document.createElement('tbody');
     
     products.forEach(product => {
         const tr = document.createElement('tr');
 
+        const values = Object.entries(product)
+        values.forEach(([key, value] )=> {
+            const td = document.createElement('td');
 
-        const tdId = document.createElement('td');
-            tdId.textContent = `${product.id}`;
-        const tdName = document.createElement('td');
-           tdName.textContent = product.name;
-
-        const tdCategory = document.createElement('td');
-            tdCategory.textContent = product.category
-
-        const tdPrice = document.createElement('td');
-            tdPrice.textContent = `${product.price} DH`;
-
-        const tdStock = document.createElement('td');
-            tdStock.textContent = `${product.stock}`;
-        
-        const tdRating = document.createElement('td');
-            tdRating.textContent = `${product.rating}`;
-
-        tr.appendChild(tdId);
-        tr.appendChild(tdName);
-        tr.appendChild(tdCategory);
-        tr.appendChild(tdPrice);
-        tr.appendChild(tdStock);
-        tr.appendChild(tdRating);
+            if (key === 'price') {
+                    td.textContent = `${value} DH`;
+            }else{
+                    td.textContent = value;
+            }
+            tr.appendChild(td);    
+        })
 
         tbody.appendChild(tr);
    });
