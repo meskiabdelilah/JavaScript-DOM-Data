@@ -99,3 +99,21 @@ function getAverageBasket(orders)
 
     return average;
 }
+
+function getDeliveredOrdersCount(orders)
+{
+    if (!orders || orders.length === 0) return 0;
+
+    const delivered = orders.filter(order => order.status === "delivered").length; 
+
+    return delivered
+}
+
+function getPendingOrdersCount(orders)
+{
+    if (!orders || orders.length === 0) return 0;
+
+    const pending = orders.filter(order => order.status === "pending").length; 
+        
+    return pending
+}

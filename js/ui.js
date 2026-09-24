@@ -107,4 +107,18 @@ function renderKPIs (orders)
         const av = getAverageBasket(orders);
         average.textContent = `${av} DH`;
     }
+
+    const deliveredOrdersCount = document.getElementById("delivered-orders");
+        if (deliveredOrdersCount)
+        {
+            const delivered = getDeliveredOrdersCount(orders);
+            deliveredOrdersCount.textContent = delivered
+        }
+
+            const pendingOrdersCount = document.getElementById("pending-orders");
+        if (pendingOrdersCount)
+        {
+            const pending = getPendingOrdersCount(orders);
+            pendingOrdersCount.textContent = pending
+        }
 }
