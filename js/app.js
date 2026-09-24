@@ -12,6 +12,11 @@ async function initApp () {
     {
         const visibleProducts = getVisibleProducts(products, state);
         renderProductsTable(visibleProducts);
+
+        const counterElement = document.getElementById("result-counter");
+        if (counterElement) {
+            counterElement.textContent = `${visibleProducts.length} produits  trouve`;
+        };
     };
 
     renderCategoryOptions(products);
@@ -45,6 +50,22 @@ async function initApp () {
         state.selectedOrder = event.target.value;
         applyFilters();
         
+    });
+
+    const  resetBtn = document.getElementById("reset-btn");
+    resetBtn.addEventListener("click", () =>{
+        state.textTyped = "";
+        state.selectedCategory = "all";
+        state.inStockOnly = false;
+        state.selectedOrder = "none";
+
+        document.getElementById("search-input").value = "";    
+        document.getElementById("select-category").value = "all";    
+        document.getElementById("stock-checkbox").checked = false;    
+        document.getElementById("sort-price").value = "none"; 
+        
+    applyFilters();
+
     });
 }
 
