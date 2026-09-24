@@ -3,42 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
     <title>E-commerce Analytics</title>
 </head>
 <body>
-
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Rechercher un produit par nom">
-        <select id="select-category"></select>
-        <input type="checkbox" id="stock-checkbox" name="inStock" />
-        <label for="stock-checkbox">En stock uniquement</label>
-        <select id="sort-price">
-            <option value="none">Par défaut</option>
-            <option value="asc">Prix : croissant</option>
-            <option value="desc">Prix : décroissant</option>
-        </select>
-        <label for="sort-price">Trier par prix</label>
-        <p id="result-counter"></p>
-        <button id="reset-btn" type="button">Réinitialiser les filtres</button>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>E-commerce Analytics Dashboard</h1>
+        </header>
+        <section class="filter-panel">
+            <div class="filter-group">
+                <input type="text" id="search-input" placeholder="Rechercher un produit par nom">
+            </div>
+            <div class="filter-group">
+                <select id="select-category"></select>
+            </div>
+            <div class="filter-group">
+                <input type="checkbox" id="stock-checkbox" name="inStock" />
+                <label for="stock-checkbox">En stock uniquement</label>
+            </div>
+            <div class="filter-group">
+                <label for="sort-price">Trier par prix</label>
+                <select id="sort-price">
+                    <option value="none">Par défaut</option>
+                    <option value="asc">Prix : croissant</option>
+                    <option value="desc">Prix : décroissant</option>
+                </select>
+            </div>
+            <div class="filter-actions">
+                <button class="reset-btn" id="reset-btn" type="button">Réinitialiser les filtres</button>
+            </div>
+        </section>
+            <div class="info-bar">
+                <p id="result-counter" class="result-count">0 produit(s) trouvé(s)</p>
+            </div>
+            <main class="main-container">
+                <div class="table-container"></div>
+            </main>
     </div>
-    <div class="table-container">
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th>nom de product</th>
-                    <th>categorie de product</th>
-                    <th> prix de product</th>
-                    <th>stock de product</th>
-                </tr>   
-            </thead>
-            <tbody id="products-tbody"></tbody>
-        </table> -->
-    </div>
-
-
-
-
 
 
     <script src="js/api.js"></script>
