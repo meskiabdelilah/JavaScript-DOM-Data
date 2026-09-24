@@ -86,3 +86,16 @@ function getTotalOrdersCount(orders)
     // console.log(totalCaEl);
     return totalCaEl ;
 }
+
+function getAverageBasket(orders)
+{
+    if (!orders || orders.length === 0) return 0;
+    
+    const totalCa = getTotalCA(orders);
+    const  totalOrders = getTotalOrdersCount(orders);
+
+    let average = totalCa / totalOrders;
+        average = Number(average.toFixed(2));
+
+    return average;
+}

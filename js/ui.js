@@ -98,7 +98,13 @@ function renderKPIs (orders)
 
     const totalCaEl = document.getElementById("total-ca");
     if (totalCaEl) {
-        let ca = getTotalCA(orders);
+        const ca = getTotalCA(orders);
         totalCaEl.textContent = `${ca} DH`;
+    }
+
+    const average = document.getElementById("average-basket");
+    if (average) {
+        const av = getAverageBasket(orders);
+        average.textContent = `${av} DH`;
     }
 }
