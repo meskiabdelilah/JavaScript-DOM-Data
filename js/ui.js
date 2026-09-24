@@ -85,3 +85,14 @@ function renderCategoryOptions (products)
     categoriesOptions.appendChild(option);
    });
 }
+
+
+function renderKPIs (orders)
+{
+    const totalOrdersEl = document.getElementById("total-orders");
+    if (totalOrdersEl)
+    {
+        const count = getTotalOrdersCount(orders);
+        totalOrdersEl.textContent = count;
+    }
+}

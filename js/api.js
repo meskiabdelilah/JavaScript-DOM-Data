@@ -26,11 +26,11 @@ async function getOrders ()
             throw new Error('file not defined');
         }
         const orders = await reponse.json()
-        console.log(orders);
-        
+        // console.log(orders);
+        return orders
     } catch (error) {
         console.log("Error (orders);", error);
-        
+        return []
     }
 }
 

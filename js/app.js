@@ -67,6 +67,12 @@ async function initApp () {
     applyFilters();
 
     });
+
+    const orders = await getOrders ();
+
+    
+    renderKPIs(orders);
+    
 }
 
 initApp();

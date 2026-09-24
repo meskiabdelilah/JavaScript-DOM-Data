@@ -65,3 +65,11 @@ function getVisibleProducts (products, state)
     return result;
 }
 
+function getTotalOrdersCount(orders)
+{
+    if (!orders || orders.length === 0) return 0
+    console.log(orders.length);
+    
+    return orders.length
+}
+
