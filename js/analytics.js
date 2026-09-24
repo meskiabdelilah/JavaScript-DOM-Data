@@ -67,9 +67,22 @@ function getVisibleProducts (products, state)
 
 function getTotalOrdersCount(orders)
 {
-    if (!orders || orders.length === 0) return 0
-    console.log(orders.length);
+    if (!orders || orders.length === 0) return 0;
+    // console.log(orders.length);
     
     return orders.length
 }
 
+ function getTotalCA(orders)
+{
+    if (!orders || orders.length === 0) return 0;
+    
+    const totalCaEl= orders.reduce((accOrder, order) => {
+        const orderTotal = order.items.reduce((accItem, item)=> {
+            return accItem + (item.quantity * item.unitPrice);
+        },0);
+        return accOrder + orderTotal ;
+    },0);
+    // console.log(totalCaEl);
+    return totalCaEl ;
+}

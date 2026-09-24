@@ -95,4 +95,10 @@ function renderKPIs (orders)
         const count = getTotalOrdersCount(orders);
         totalOrdersEl.textContent = count;
     }
+
+    const totalCaEl = document.getElementById("total-ca");
+    if (totalCaEl) {
+        let ca = getTotalCA(orders);
+        totalCaEl.textContent = `${ca} DH`;
+    }
 }
