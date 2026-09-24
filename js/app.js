@@ -32,7 +32,17 @@ async function initApp () {
         const filteredProducts = filterByStock(products, isChecked);
     
     renderProductsTable(filteredProducts);
-});
+    });
+
+    const sortSelect = document.getElementById("sort-price");
+
+    sortSelect.addEventListener("change", (event) => {
+        const selectedOrder = event.target.value;
+    
+        const sortedProducts = sortByPrice(products, selectedOrder);
+    
+    renderProductsTable(sortedProducts);
+    });
 }
 
 initApp();
