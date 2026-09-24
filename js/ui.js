@@ -121,4 +121,10 @@ function renderKPIs (orders)
             const pending = getPendingOrdersCount(orders);
             pendingOrdersCount.textContent = pending
         }
+
+    const deliveredRate = document.getElementById("delivery-rate");
+        if (deliveredRate) {
+            const rate = getDeliveryRate(orders);
+            deliveredRate.textContent = `${rate} %`;
+        }   
 }

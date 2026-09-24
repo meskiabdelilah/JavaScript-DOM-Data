@@ -115,5 +115,18 @@ function getPendingOrdersCount(orders)
 
     const pending = orders.filter(order => order.status === "pending").length; 
         
-    return pending
+    return pending;
+}
+
+function getDeliveryRate(orders)
+{
+    if (!orders || orders.length === 0) return 0;
+
+    const deliveredOrders = getDeliveredOrdersCount(orders);
+    const totalOrders = getTotalOrdersCount(orders);
+
+    let deliveredRate = (deliveredOrders / totalOrders) *100 ;
+        deliveredRate = Number(deliveredRate.toFixed(2));
+    
+    return deliveredRate
 }
