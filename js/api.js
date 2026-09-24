@@ -3,7 +3,7 @@ async function getProducts ()
     try {
         const reponse = await fetch('data/products.json');
         if (!reponse.ok) {
-            throw new Error("file not defend ");
+            throw new Error("file not defined ");
         }
         const products = await reponse.json();
         // console.log(products);
@@ -17,3 +17,21 @@ async function getProducts ()
 }
 
 getProducts();
+
+async function getOrders ()
+{
+    try {
+        const reponse = await fetch('data/orders.json');
+        if (!reponse.ok) {
+            throw new Error('file not defined');
+        }
+        const orders = await reponse.json()
+        console.log(orders);
+        
+    } catch (error) {
+        console.log("Error (orders);", error);
+        
+    }
+}
+
+getOrders() ;
