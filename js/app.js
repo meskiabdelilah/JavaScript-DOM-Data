@@ -14,6 +14,15 @@ async function initApp () {
 
     });
 
+    const selectedCategory = document.getElementById("select-category");
+    selectedCategory.addEventListener("change", (event) => {
+        const selectedCategory = event.target.value ;
+        const filteredCategories = filterCategory(products,selectedCategory);
+
+        renderProductsTable(filteredCategories);
+    });
+
+    renderCategoryOptions(products);
 }
 
 initApp();

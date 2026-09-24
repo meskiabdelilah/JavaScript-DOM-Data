@@ -59,3 +59,29 @@ function renderProductsTable(products)
 
 }
 
+function renderCategoryOptions (products)
+{
+   const categories = products.map(product => product.category);
+   
+// Supprimer les doublons categories
+    const categoriesUnique = [...new Set(categories)];
+    // console.log(categoriesUnique);
+
+    const categoriesOptions = document.getElementById("select-category");
+        categoriesOptions.innerHTML = "";
+
+// Creation de l'option par defaut
+    const defaultOption = document.createElement('option');
+        defaultOption.value = "all";
+        defaultOption.textContent = "tout les catégories";
+        categoriesOptions.appendChild(defaultOption);
+
+// Generation dynamique des options selon les categories uniques
+    categoriesUnique.forEach(categorie => {
+    const option = document.createElement('option');
+
+        option.value = categorie ;
+        option.textContent = categorie ;
+    categoriesOptions.appendChild(option);
+   });
+}
