@@ -25,3 +25,15 @@ function filterCategory (products,selectedCategory)
 
 }
 
+function filterByStock(products, inStockOnly)
+{
+    if (!products || products.length === 0) {
+        return [];
+    }
+    if (inStockOnly){
+        return products.filter(product => product.stock > 0);
+    }
+
+    return products
+}
+

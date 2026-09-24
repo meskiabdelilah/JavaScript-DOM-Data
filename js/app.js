@@ -23,6 +23,16 @@ async function initApp () {
     });
 
     renderCategoryOptions(products);
+
+    const stockCheckbox = document.getElementById("stock-checkbox");
+
+    stockCheckbox.addEventListener("change", (event) => {
+        const isChecked = event.target.checked;
+    
+        const filteredProducts = filterByStock(products, isChecked);
+    
+    renderProductsTable(filteredProducts);
+});
 }
 
 initApp();
