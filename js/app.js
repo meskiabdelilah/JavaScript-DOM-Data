@@ -1,47 +1,50 @@
 async function initApp () {
     const products = await getProducts ();
 
-    renderProductsTable(products);
+    const state = {
+        textTyped : "",
+        selectedCategory : "all",
+        inStockOnly: false,
+        selectedOrder: "none"
+    };
+
+    function applyFilters()
+    {
+        const visibleProducts = getVisibleProducts(products, state);
+        renderProductsTable(visibleProducts);
+    };
+
+    renderCategoryOptions(products);
+    applyFilters();
+
 
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("input", (event) =>{
-        const textTyped = event.target.value ;
-        const filteredResult = filterName(products, textTyped);
-
-        console.log(filteredResult);
-
-        renderProductsTable(filteredResult);
+        state.textTyped = event.target.value ;
+        applyFilters();
 
     });
 
     const selectedCategory = document.getElementById("select-category");
     selectedCategory.addEventListener("change", (event) => {
-        const selectedCategory = event.target.value ;
-        const filteredCategories = filterCategory(products,selectedCategory);
+        state.selectedCategory = event.target.value ;
+        applyFilters();
 
-        renderProductsTable(filteredCategories);
     });
 
-    renderCategoryOptions(products);
 
     const stockCheckbox = document.getElementById("stock-checkbox");
-
     stockCheckbox.addEventListener("change", (event) => {
-        const isChecked = event.target.checked;
-    
-        const filteredProducts = filterByStock(products, isChecked);
-    
-    renderProductsTable(filteredProducts);
+        state.isChecked = event.target.checked;
+        applyFilters();
+
     });
 
     const sortSelect = document.getElementById("sort-price");
-
     sortSelect.addEventListener("change", (event) => {
-        const selectedOrder = event.target.value;
-    
-        const sortedProducts = sortByPrice(products, selectedOrder);
-    
-    renderProductsTable(sortedProducts);
+        state.selectedOrder = event.target.value;
+        applyFilters();
+        
     });
 }
 

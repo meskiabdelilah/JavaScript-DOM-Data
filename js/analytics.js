@@ -55,3 +55,13 @@ function sortByPrice(products, selectedOrder)
     return sorted;
 }
 
+function getVisibleProducts (products, state)
+{
+    let result = filterName(products, state.textTyped);
+    result = filterCategory(result,state.selectedCategory);
+    result = filterByStock(result, state.inStockOnly);
+    result = sortByPrice(result, state.selectedOrder);
+
+    return result;
+}
+
